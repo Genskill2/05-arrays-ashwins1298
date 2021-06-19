@@ -52,27 +52,31 @@ return arr[i];
 }
 
 
-int factors(int n, int [])
-{ 
-   int n,i; 
-    while (n%2 == 0) 
-    { 
-        printf("%d ", 2); 
-        n = n/2; 
-    } 
-    
-    
-    for (int i = 3; i <= sqrt(n); i = i+2) 
-    { 
-         
-        while (n%i == 0) 
-        { 
-            printf("%d ", i); 
-            n = n/i; 
-        } 
-    } 
-    
-    
-    if (n > 2) 
-        printf ("%d ", n); 
+int factors(int num,int arr[]){
+	int prime=2,ref=0;
+	int count=0,index=0;
+	while(num!=1){
+		if(num%prime==0){
+			num=num/prime;
+			count++;
+			arr[index]=prime;
+			index++;
+		}
+		else{
+			while(1){
+				prime++;
+				for(int j=2;j<prime;j++){
+					if(prime%j==0)
+						ref++;
+				}
+				if(ref==0){
+					break;
+				}
+				else{
+					ref=0;
+				}
+			}
+		}
+	}
+	return count;
 }
